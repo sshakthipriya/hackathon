@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">e-Bookshelf</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText" >
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active" *ngIf="checkLogin() == true">
+          <a class="nav-link" routerLink="/mybooks">MyBooks</a>
+        </li>
+        <li class="nav-item" *ngIf="checkLogin() == true">
+          <a class="nav-link" routerLink="/search">Search Books</a>
+        </li>
+
+        <li class="nav-item" *ngIf="checkLogin() == true">
+          <a class="nav-link" routerLink="/enroll">Enroll Book</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right mr-5" >
+        <li class="nav-item" *ngIf="checkLogin() == false">
+            <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+
+        <li class="nav-item" *ngIf="checkLogin() == true">
+            <a class="nav-link" routerLink="/login" (click)="logout()">Logout</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>

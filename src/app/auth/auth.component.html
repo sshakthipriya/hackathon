@@ -1,0 +1,43 @@
+<section class="vh-100 bg-image">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+                <div class="alert alert-danger" *ngIf="err" style="text-align: center;">
+                    <p>{{ err }}</p>
+                </div>
+                <div *ngIf="isLoading" style="text-align: center;">
+                    <app-loading> </app-loading>
+                </div>
+              <h2 class="text-uppercase text-center mb-5" *ngIf="!isLoading">{{ isLoginMode ? 'Login' : 'Sign-Up' }}</h2>
+
+              <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="email">Your Email</label>
+                  <input type="email" id="email" class="form-control form-control-lg" name="email" ngModel required email />
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="password">Password</label>
+                  <input type="password" id="password" class="form-control form-control-lg" name="password" ngModel required minlength="6"/>
+                </div>
+
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit" [disabled]="!authForm.valid"
+                    class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body me-2">{{ isLoginMode ? 'Login' : 'Sign Up' }}</button> 
+                  <button type="button"
+                    class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body ms-2" (click)="onSwitchMode()">Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

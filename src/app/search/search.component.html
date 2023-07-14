@@ -1,0 +1,54 @@
+<div class="mt-2 bg-light">
+    <form [formGroup]="bookSearch" (ngSubmit)="submit()">
+      <h4>Search Your books</h4>
+        <!-- Book input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="form5Example1">Book</label>
+          <input type="text" id="form5Example1" class="form-control" formControlName ="book" />
+         
+        </div>
+      
+        <!-- Author input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="form5Example2">Author</label>
+          <input type="email" id="form5Example2" class="form-control" formControlName ="author" />
+         
+        </div>
+      
+      
+        <!-- Submit button -->
+        <button type="submit"  class="btn btn-primary btn-block mb-4">Search</button>
+      </form>
+      <section class="vh-50 bg-light">
+      <table *ngIf="books.length > 0" class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>bookId</th>
+            <th>BookName</th>
+            <th>AuthorName</th>
+            <th>owner Name</th>
+            <th>Available</th>
+            <th>ReturnDate</th>
+            <th>Book</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books">
+            <td>{{ book.bookId }}</td>
+            <td>{{ book.bookName }}</td>
+            <td>{{ book.authorFirstName }} {{book.authorLastName}}</td>
+            <td>{{book.ownerName}}</td>
+            <td *ngIf ="book.available" class="text-success">Yes</td>
+            <td *ngIf ="!book.available" class="text-danger">No</td>
+            <td *ngIf="book.returnDate != null">{{ book.returnDate.slice(0, 10) }}</td>
+            <td *ngIf="book.returnDate == null">-</td>
+            <td><button type="button" id="bookButton" [disabled]="book.available== false" (click)="reserveBook(book)">Book</button></td>
+          </tr>
+        </tbody>
+      </table>
+      </section>
+      <section *ngIf="books.length == 0 && this.check">
+        <p>{{errormessage}}</p>
+      </section>
+      
+</div>

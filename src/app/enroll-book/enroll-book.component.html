@@ -1,0 +1,29 @@
+
+<div class="mt-2 bg-light">
+<form [formGroup]="enrollForm" (ngSubmit)="submit()">
+    <h4>Enroll Your books</h4>
+      <!-- Book Name input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form5Example1">Book Name</label>
+        <input type="text" id="form5Example1" class="form-control" formControlName ="bookName" />
+       
+      </div>
+    
+      <!-- Author First Name input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form5Example2">Author First Name</label>
+        <input type="email" id="form5Example2" class="form-control" formControlName ="authorFirstName" />
+       
+      </div>
+
+       <!-- Author Last Name input -->
+       <div class="form-outline mb-4">
+        <label class="form-label" for="form5Example2">Author Last Name</label>
+        <input type="email" id="form5Example2" class="form-control" formControlName ="authorLastName" />
+      </div>
+    
+    
+      <!-- Submit button -->
+      <button type="submit"  class="btn btn-primary btn-block mb-4">Enroll</button>
+    </form>
+</div>
